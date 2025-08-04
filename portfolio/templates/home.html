@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}Home / Meu portfólio {% endblock %}
+
+{% block content %}
+    <section>
+        <h1>Sobre mim</h1>
+        <p>Olá! Meu nome é Rubens Gabriel, sou analista de dados e apaixonado por indexação
+            e ETFs.
+        </p>
+    </section>
+    <section>
+        <h2>Habilidades</h2>
+        <ul>
+            {% for chave,dados in habilidades.items %}
+            <li>{{dados.nome}}</li>
+            {% endfor %}
+        </ul>
+    </section>
+    <section>
+        <h2>Contatos</h2>
+        <p>Email: rugabriel.gabriel@gmail.com</p>
+        <p>Linkedin: https://www.linkedin.com/in/rubens-gabriel-58a4b7125/</p>
+        <p>Telefone: +55 (84) 99117 2686</p>
+    </section>
+{% endblock %}
