@@ -1,26 +1,53 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}Home / Meu portfólio {% endblock %}
 
 {% block content %}
-    <section>
-        <h1>Sobre mim</h1>
-        <p>Olá! Meu nome é Rubens Gabriel, sou analista de dados e apaixonado por indexação
-            e ETFs.
-        </p>
+    <section style="display: flex; align-items: center; gap: 20px; margin-bottom: 40px;">
+        <img src="{% static 'img/rubens.jpeg' %}" alt="Foto de Rubens Gabriel"
+             style="max-width: 200px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+        <div>
+            <h1>Sobre mim</h1>
+            <p>Olá! Meu nome é Rubens Gabriel, sou analista de dados e apaixonado por indexação
+                e ETFs.
+            </p>
+        </div>
     </section>
-    <section>
+
+    <section style="margin-bottom: 40px;">
         <h2>Habilidades</h2>
-        <ul>
-            {% for chave,dados in habilidades.items %}
-            <li>{{dados.nome}}</li>
+        <ul style="
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            max-width: 800px;
+            margin: 0 auto;
+        ">
+            {% for chave, dados in habilidades.items %}
+                <li style="
+                    background-color: #f8f8f8;
+                    padding: 12px 20px;
+                    border-radius: 8px;
+                    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+                    font-weight: 500;
+                ">
+                    {{ dados.nome }}
+                </li>
             {% endfor %}
         </ul>
     </section>
+
     <section>
         <h2>Contatos</h2>
-        <p>Email: rugabriel.gabriel@gmail.com</p>
-        <p>Linkedin: https://www.linkedin.com/in/rubens-gabriel-58a4b7125/</p>
-        <p>Telefone: +55 (84) 99117 2686</p>
+        <p>Email: <a href="mailto:rugabriel.gabriel@gmail.com">rugabriel.gabriel@gmail.com</a></p>
+        <p>LinkedIn: 
+            <a href="https://www.linkedin.com/in/rubens-gabriel-58a4b7125/" target="_blank" rel="noopener noreferrer">
+                rubens-gabriel-58a4b7125
+            </a>
+        </p>
+        <p>Telefone: +55 (84) 99117-2686</p>
     </section>
 {% endblock %}

@@ -1,11 +1,9 @@
-{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Meu portfólio{% endblock %}</title>
-    <link rel="stylesheet" href="{% static 'CSS/style.css' %}">
 </head>
 <body>
     <header>
@@ -17,8 +15,10 @@
         {% block content %}
         {% endblock %}
     </main>
-    <footer>
-        <p>&copy; 2025 Rubens Gabriel. Todos os direitos reservados</p>
-    </footer>
+<footer>
+    <p>&copy; 2025 Rubens Gabriel. Todos os direitos reservados</p>
+</footer>
+
+
 </body>
 </html>
