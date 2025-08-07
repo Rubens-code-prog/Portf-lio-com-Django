@@ -1,24 +1,75 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Meu portfólio{% endblock %}</title>
-    <link rel="stylesheet" href="{% static 'CSS/style.css' %}">
+    <title>{% block title %}Portfólio de Rubens Gabriel{% endblock %}</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="{% static '/CSS/style.css'%}">
 </head>
 <body>
-    <header>
-        <h1>Meu portfólio</h1>
-        <a href="{% url 'home' %}">Home</a>
-        <a href="{% url 'lista_projetos' %}">Projetos</a>
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="{% url 'home' %}" class="logo">Rubens<span>Gabriel</span></a>
+                <ul class="nav-links">
+                    <li><a href="{% url 'home' %}">Home</a></li>
+                    <li><a href="{% url 'lista_projetos' %}">Projetos</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
-    <main>
+
+    <main class="main-content">
         {% block content %}
         {% endblock %}
     </main>
-    <footer>
-        <p>&copy; 2025 Rubens Gabriel. Todos os direitos reservados</p>
+
+    <footer class="footer">
+        <div class="container">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 40px;">
+                <div>
+                    <h3 style="font-size: 1.5rem; margin-bottom: 20px; font-family: 'Poppins', sans-serif;">Rubens Gabriel</h3>
+                    <p style="opacity: 0.8;">Analista de dados apaixonado por tecnologia, indexação e ETFs.</p>
+                </div>
+                <div>
+                    <h3 style="font-size: 1.2rem; margin-bottom: 20px; font-family: 'Poppins', sans-serif;">Links Rápidos</h3>
+                    <ul style="list-style: none;">
+                        <li style="margin-bottom: 10px;"><a href="{% url 'home' %}" style="color: white; opacity: 0.8; text-decoration: none;">Home</a></li>
+                        <li style="margin-bottom: 10px;"><a href="{% url 'lista_projetos' %}" style="color: white; opacity: 0.8; text-decoration: none;">Projetos</a></li>
+                        <li style="margin-bottom: 10px;"><a href="#contato" style="color: white; opacity: 0.8; text-decoration: none;">Contato</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 style="font-size: 1.2rem; margin-bottom: 20px; font-family: 'Poppins', sans-serif;">Contato</h3>
+                    <ul style="list-style: none;">
+                        <li style="margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+                            <i class="fas fa-envelope"></i>
+                            <a href="mailto:rugabriel.gabriel@gmail.com" style="color: white; text-decoration: none;">rugabriel.gabriel@gmail.com</a>
+                        </li>
+                        <li style="margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+                            <i class="fas fa-phone"></i>
+                            <a href="tel:+5584991172686" style="color: white; text-decoration: none;">+55 (84) 99117-2686</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div style="border-top: 1px solid rgba(255,255,255,0.1); padding: 20px 0; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 15px;">
+                <p style="opacity: 0.7; font-size: 0.9rem;">&copy; 2023 Rubens Gabriel. Todos os direitos reservados.</p>
+                <div style="display: flex; gap: 15px;">
+                    <a href="https://www.linkedin.com/in/rubens-gabriel-58a4b7125/" target="_blank" style="color: white; width: 40px; height: 40px; border-radius: 50%; background-color: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; text-decoration: none;">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="#" target="_blank" style="color: white; width: 40px; height: 40px; border-radius: 50%; background-color: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; text-decoration: none;">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
     </footer>
 </body>
 </html>
