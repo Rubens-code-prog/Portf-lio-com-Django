@@ -1,17 +1,59 @@
 {% extends 'base.html' %}
+{% load static %}
 
-{% block title %}{{projeto.título}} / Meu portfolio{% endblock %}
+{% block title %}{{ projeto.título }} / Meu portfolio{% endblock %}
 
 {% block content %}
-    <h1>{{projeto.título}}</h1>
-    <section>
-        <h3>Detalhes do projeto</h3>
-        <p>{{projeto.descricao}}</p>
+<section style="padding: 150px 0 80px;">
+    <div class="container">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px;">
+            <h1 style="font-size: 2.5rem; color: #2c3e50; font-family: 'Poppins', sans-serif;">{{ projeto.título }}</h1>
+            <a href="{{ projeto.Repositório }}" target="_blank" style="display: inline-flex; align-items: center; gap: 8px; background-color: #333; color: white; padding: 8px 15px; border-radius: 5px; text-decoration: none;">
+                <i class="fab fa-github"></i> Ver no GitHub
+            </a>
+        </div>
 
-        <h3>Tecnologias</h3>
-        <p>{{projeto.tecnologia}}</p>
+        <div style="display: flex; gap: 40px;">
+            <div style="flex: 2;">
+                <div style="margin-bottom: 30px; border-radius: 10px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+                    <img src="{% static projeto.imagem|default:'img/project-default.jpg' %}" alt="{{ projeto.título }}" style="width: 100%; height: auto; display: block;">
+                </div>
+                
+                <div>
+                    <h3 style="margin-bottom: 20px; font-family: 'Poppins', sans-serif; color: #2c3e50;">Detalhes do Projeto</h3>
+                    <p style="margin-bottom: 20px; line-height: 1.8;">{{ projeto.descricao }}</p>
+                </div>
+            </div>
 
-        <p>GitHub</p>
-        <a href="{{projeto.Repositório}}">Repositorio</a>
-    </section>
+            <div style="flex: 1;">
+                <div style="background-color: white; padding: 25px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); margin-bottom: 30px;">
+                    <h3 style="margin-bottom: 15px; font-family: 'Poppins', sans-serif; color: #2c3e50;">Tecnologias Utilizadas</h3>
+                    <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                        {% for tech in projeto.tecnologia.split %}
+                            <span style="background-color: #e0f2fe; color: #3498db; padding: 5px 10px; border-radius: 20px; font-size: 0.8rem; font-weight: 500;">{{ tech }}</span>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <div style="background-color: white; padding: 25px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); margin-bottom: 30px;">
+                    <h3 style="margin-bottom: 15px; font-family: 'Poppins', sans-serif; color: #2c3e50;">Links Relacionados</h3>
+                    <ul style="list-style: none;">
+                        <li style="margin-bottom: 10px;">
+                            <a href="{{ projeto.Repositório }}" target="_blank" style="display: flex; align-items: center; gap: 10px; color: #333; text-decoration: none;">
+                                <i class="fab fa-github"></i> Repositório GitHub
+                            </a>
+                        </li>
+                        {% if projeto.demo %}
+                        <li style="margin-bottom: 10px;">
+                            <a href="{{ projeto.demo }}" target="_blank" style="display: flex; align-items: center; gap: 10px; color: #333; text-decoration: none;">
+                                <i class="fas fa-external-link-alt"></i> Demonstração ao Vivo
+                            </a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 {% endblock %}
