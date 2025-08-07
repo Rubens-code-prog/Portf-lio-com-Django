@@ -4,50 +4,82 @@
 {% block title %}Home / Meu portfólio {% endblock %}
 
 {% block content %}
-    <section style="display: flex; align-items: center; gap: 20px; margin-bottom: 40px;">
-        <img src="{% static 'img/rubens.jpeg' %}" alt="Foto de Rubens Gabriel"
-             style="max-width: 200px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
-        <div>
-            <h1>Sobre mim</h1>
-            <p>Olá! Meu nome é Rubens Gabriel, sou analista de dados e apaixonado por indexação
-                e ETFs.
-            </p>
-        </div>
-    </section>
+<section class="hero-section">
+    <div class="container">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Rubens Gabriel</h1>
+                <h2>Analista de Dados & Desenvolvedor</h2>
+                <p class="hero-description">Transformando dados em insights valiosos com Python, Power BI e Excel.</p>
+                <div class="hero-buttons">
+                    <a href="{% url 'lista_projetos' %}" class="btn btn-primary">Meus Projetos</a>
+                    <a href="#contato" class="btn btn-secondary">Contato</a>
+                </div>
+            </div>
+        </div>
 
-    <section style="margin-bottom: 40px;">
-        <h2>Habilidades</h2>
-        <ul style="
-            list-style: none;
-            padding: 0;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 16px;
-            max-width: 800px;
-            margin: 0 auto;
-        ">
-            {% for chave, dados in habilidades.items %}
-                <li style="
-                    background-color: #f8f8f8;
-                    padding: 12px 20px;
-                    border-radius: 8px;
-                    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-                    font-weight: 500;
-                ">
-                    {{ dados.nome }}
-                </li>
-            {% endfor %}
-        </ul>
-    </section>
+                <div class="about-and-image">
+            <div class="hero-image">
+                <img src="{% static 'img/rubens.jpeg' %}" alt="Foto de Rubens Gabriel" class="profile-image">
+            </div>
+            <div class="about-content">
+                <h2 class="section-title">Sobre Mim</h2>
+                <p>Olá! Meu nome é Rubens Gabriel, sou analista de dados e apaixonado por indexação e ETFs. Tenho experiência em transformar dados complexos em informações acionáveis que impulsionam decisões estratégicas.</p>
+                <p>Minha abordagem combina habilidades técnicas sólidas com uma compreensão profunda de negócios, permitindo-me criar soluções que realmente agregam valor.</p>
+            </div>
+        </div>
+    </div>
+</section>
 
-    <section>
-        <h2>Contatos</h2>
-        <p>Email: <a href="mailto:rugabriel.gabriel@gmail.com">rugabriel.gabriel@gmail.com</a></p>
-        <p>LinkedIn: 
-            <a href="https://www.linkedin.com/in/rubens-gabriel-58a4b7125/" target="_blank" rel="noopener noreferrer">
-                rubens-gabriel-58a4b7125
-            </a>
-        </p>
-        <p>Telefone: +55 (84) 99117-2686</p>
-    </section>
+<section class="skills-section" id="habilidades">
+    <div class="container">
+        <h2 class="section-title">Habilidades</h2>
+        <div class="skills-grid">
+            {% for chave, dados in habilidades.items %}
+            <div class="skill-card">
+                <div class="skill-icon">
+                    <i class="fas fa-{{ dados.icone|default:'code' }}"></i>
+                </div>
+                <h3>{{ dados.nome }}</h3>
+                <p>{{ dados.nivel|default:'Avançado' }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="contact-section" id="contato">
+    <div class="container">
+        <h2 class="section-title">Contato</h2>
+        <div class="contact-content">
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <a href="mailto:rugabriel.gabriel@gmail.com">rugabriel.gabriel@gmail.com</a>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <a href="tel:+5584991172686">+55 (84) 99117-2686</a>
+                </div>
+                <div class="contact-item">
+                    <i class="fab fa-linkedin"></i>
+                    <a href="https://www.linkedin.com/in/rubens-gabriel-58a4b7125/" target="_blank">rubens-gabriel-58a4b7125</a>
+                </div>
+            </div>
+            <form class="contact-form" method="post" action="#">
+                {% csrf_token %}
+                <div class="form-group">
+                    <input type="text" name="nome" placeholder="Seu nome" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" name="email" placeholder="Seu email" required>
+                </div>
+                <div class="form-group">
+                    <textarea name="mensagem" placeholder="Sua mensagem" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Enviar Mensagem</button>
+            </form>
+        </div>
+    </div>
+</section>
 {% endblock %}
