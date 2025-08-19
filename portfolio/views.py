@@ -21,8 +21,8 @@ def home(request):
             email_obj = EmailMessage(
                 subject= assunto,
                 body=corpo_email,
-                from_email= settings.DEFAULT_FROM_EMAIL
-                to=[settings.DEFAULT_FROM_EMAIL]
+                from_email= settings.DEFAULT_FROM_EMAIL,
+                to=[settings.DEFAULT_FROM_EMAIL],
                 reply_to=[email]
             )
             email_obj.send()

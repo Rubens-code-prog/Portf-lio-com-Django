@@ -45,23 +45,22 @@
     </div>
 </section>
 
+
 <section class="contact-section" id="contato">
     <div class="container">
         <h2 class="section-title">Contato</h2>
         <div class="contact-content">
+    {% if messages %}
+    {% for message in messages %}
+        {{message}}
+    {% endfor %}
+    {% endif %}
             <div class="contact-info">
-                <div class="contact-item">
-                    <i class="fas fa-envelope"></i>
-                    <a href="mailto:rugabriel.gabriel@gmail.com">rugabriel.gabriel@gmail.com</a>
-                </div>
-                <div class="contact-item">
-                    <i class="fas fa-phone"></i>
-                    <a href="tel:+5584991172686">+55 (84) 99117-2686</a>
-                </div>
-                <div class="contact-item">
-                    <i class="fab fa-linkedin"></i>
-                    <a href="https://www.linkedin.com/in/rubens-gabriel-58a4b7125/" target="_blank">rubens-gabriel-58a4b7125</a>
-                </div>
+                <form method="post"> 
+                    {% csrf_token %}
+                    {{form.as_p}}
+                <button type="submit">Enviar</button>
+                </form>
             </div>
             <form class="contact-form" method="post" action="#">
                 {% csrf_token %}
