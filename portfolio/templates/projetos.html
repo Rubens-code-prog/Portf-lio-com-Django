@@ -13,20 +13,20 @@
         <p style="text-align: center; color: #7f8c8d; margin-bottom: 3rem; font-size: 1.1rem;">Projetos que desenvolvi para resolver problemas reais e demonstrar minhas habilidades.</p>
         
         <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 30px; margin-top: 40px;">
-            {% for key, infos in projetos.items %}
+            {% for projeto in projetos %}
             <div style="background-color: white; border-radius: 10px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1); transition: all 0.3s ease;">
                 <div style="height: 200px; overflow: hidden;">
                     <img src="{% static infos.imagem|default:'img/project-default.jpg' %}" alt="{{ infos.título }}" style="width: 100%; height: 100%; object-fit: cover;">
                 </div>
                 <div style="padding: 20px;">
-                    <h3 style="margin-bottom: 10px; font-family: 'Poppins', sans-serif;">{{ infos.título }}</h3>
-                    <p style="color: #7f8c8d; margin-bottom: 15px; font-size: 0.9rem;">{{ infos.descricao_curta|default:infos.descricao|truncatewords:20 }}</p>
+                    <h3 style="margin-bottom: 10px; font-family: 'Poppins', sans-serif;">{{ projeto.titulo }}</h3>
+                    <p style="color: #7f8c8d; margin-bottom: 15px; font-size: 0.9rem;">{{ projeto.descricao }}</p>
                     <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 15px;">
                         {% for tech in infos.tecnologia.split %}
                             <span style="background-color: #e0f2fe; color: #3498db; padding: 5px 10px; border-radius: 20px; font-size: 0.8rem; font-weight: 500;">{{ tech }}</span>
                         {% endfor %}
                     </div>
-                    <a href="{% url 'detalhes_projetos' id_projeto=key %}" style="display: inline-block; padding: 8px 16px; border-radius: 5px; font-weight: 500; text-align: center; cursor: pointer; text-decoration: none; background-color: transparent; color: #3498db; border: 1px solid #3498db;">Ver Detalhes</a>
+                    <a href="{% url 'detalhes_projetos' id_projeto=projeto.id %}" style="display: inline-block; padding: 8px 16px; border-radius: 5px; font-weight: 500; text-align: center; cursor: pointer; text-decoration: none; background-color: transparent; color: #3498db; border: 1px solid #3498db;">Ver Detalhes</a>
                 </div>
             </div>
             {% endfor %}

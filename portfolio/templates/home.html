@@ -35,13 +35,10 @@
     <div class="container">
         <h2 class="section-title">Habilidades</h2>
         <div class="skills-grid">
-            {% for chave, dados in habilidades.items %}
+            {% for habilidade in habilidades %}
             <div class="skill-card">
-                <div class="skill-icon">
-                    <i class="fas fa-{{ dados.icone|default:'code' }}"></i>
                 </div>
-                <h3>{{ dados.nome }}</h3>
-                <p>{{ dados.nivel|default:'Avançado' }}</p>
+                <h3>{{ habilidade.nome }}</h3>
             </div>
             {% endfor %}
         </div>
